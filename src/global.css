@@ -1,0 +1,16 @@
+/* Reset css */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css');
+/* Nunito font */
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+:root {
+    --primary-color: #1778F2;
+    --border-color: #dadada;
+    --gray-background: #edf0f5;
+    --green: #42b72a;
+}
+
+body {
+    font-family: 'Nunito', Arial, sans-serif;
+}
+
