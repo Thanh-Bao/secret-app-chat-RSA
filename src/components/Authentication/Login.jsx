@@ -1,6 +1,5 @@
 import styles from './Authentication.module.css'
 import React from 'react'
-import clsx from 'clsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
@@ -9,7 +8,7 @@ const Login = () => {
     return (
         <form className={styles.container}>
             <div className={styles.header}>
-                Đăng nhập
+                Login
             </div>
             <div className={styles.inputForm}>
                 <label htmlFor="username-login">Username: </label>
@@ -17,7 +16,7 @@ const Login = () => {
             </div>
             <div className={styles.inputForm}>
                 <label htmlFor="password-login">Password: </label>
-                <input id="password-login" type="password" required />
+                <input id="password-login" type="password" required autoComplete='off'/>
             </div>
             <button className={styles.inputForm} id={styles.btnLogin} type='submit'>Login</button>
 
