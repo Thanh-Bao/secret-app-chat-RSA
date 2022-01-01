@@ -1,9 +1,6 @@
-body{
-    background-color: var(--gray-background);
-    height: 100vh;
-}
 
 .wrapper{
+    background-color: var(--gray-background);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,6 +48,7 @@ body{
     border-radius:5px; 
     font-size:20px; 
     box-sizing: border-box;
+    padding: 0 10px;
 }
 
 .inputForm input:focus {
@@ -59,12 +57,12 @@ body{
         box-shadow:0 0 3px  var(--primary-color);
 }
 
-#btnLogin {
+.btnPrimary {
    height: var(--height-item);
    background: var(--primary-color);
 }
 
-#btnRegister {
+.btnSecondary {
     height: var(--height-item);
     width: 40%;
     margin-bottom: 20px;
@@ -72,15 +70,15 @@ body{
     background-color: var(--green);
 }
 
-#btnLogin:hover {
+.btnPrimary:hover {
     background-color: rgb(13, 90, 212);
 }
 
-#btnRegister:hover {
+.btnSecondary:hover {
     background-color: rgb(36, 153, 12);
 }
 
-#btnRegister::before {
+.btnSecondary::before {
     content: '';
     width: 94%;
     border-bottom: solid 1px var(--border-color);
@@ -88,6 +86,52 @@ body{
     left: 3%;
     bottom: calc(20px + var(--height-item) * 3/2 - 5px  );
     z-index: 1;
+}
+
+#btnLogin {
+    background-color: var(--green);
+}
+
+#btnRegister {
+    background-color: var(--primary-color);
+}
+
+#rememberPassword input{
+    width: 20px;
+    height: 20px; 
+}
+
+#rememberPassword {
+    margin-left: 2%;
+    margin-top: 2%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.warningForm{
+    margin : 10px 0 0 10px;
+    color: red;
+}
+
+#usernameForm{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+
+#usernameForm input{
+    padding-right: 50px;
+}
+
+#usernameForm span {
+    position: absolute;
+    margin-right: 8px;
+    color: rgb(1, 187, 1);
+    font-size: 15px;
+    font-weight: bolder;
 }
 
 .container button {
@@ -114,7 +158,6 @@ body{
     }
     .container{
         margin: 5% 0;
-        /* margin-bottom: 10%; */
     }
  }
 

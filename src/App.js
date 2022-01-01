@@ -1,14 +1,14 @@
 import * as constants from './const'
 import Authentication from './components/Authentication/Authentication'
-import Home from './components/Home/Home' 
+import Home from './components/Home/Home'
 
 function App() {
 
-  const userId = localStorage.getItem(constants.USERID_KEY);
+  const rememberPassword = localStorage.getItem(constants.REMEMBER_PASSWORD);
 
   return (
     <>
-      {userId ? <Home /> : <Authentication />}
+      {rememberPassword==="true" ? <Home /> : <Authentication />}
     </>
   );
 }

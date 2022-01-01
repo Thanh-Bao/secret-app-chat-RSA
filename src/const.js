@@ -1,7 +1,9 @@
 // use for localStorage key
 export const USERID_KEY = 'USERID_KEY'; 
+export const REMEMBER_PASSWORD = 'REMEMBER_PASSWORD';
 
-
+//firebase firestore
+export const COLLECTION_NAME = "users"
 
 
 //export const CONSTANT_N = 'value';
