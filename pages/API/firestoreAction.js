@@ -16,9 +16,10 @@ export const checkUsernameExists = async username => {
 }
 
 export const addUser = async account => {
+    const { username, password, publicKey, recentConversation } = account;
     try {
         const userRef = collection(db, constants.COLLECTION_NAME);
-        await setDoc(doc(userRef, account.username), account);
+        await setDoc(doc(userRef, username), { password, publicKey, recentConversation });
         return true;
     } catch (err) {
         return false;

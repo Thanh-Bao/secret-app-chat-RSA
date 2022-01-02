@@ -4,16 +4,16 @@ import Dashboard from './components/Home/Dashboard';
 
 export default function index() {
 
-  const isRememberMe = null;
-  const isLogined = null;
+  let isRememberMe = null;
+  let username = null;
 
   if (typeof window !== "undefined") {
     isRememberMe = localStorage.getItem(constants.REMEMBER_PASSWORD);
-    isLogined = localStorage.getItem(constants.USERID);
+    username = localStorage.getItem(constants.USERID);
   }
   return (
     <>
-      {isLogined && isRememberMe ? <Dashboard /> : <Login />}
+      {username && isRememberMe ? <Dashboard /> : <Login />}
     </>
   )
 }

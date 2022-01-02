@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import * as API from './API/firestoreAction'
 import { useRouter } from 'next/router'
 import { async } from '@firebase/util'
+import * as constants from './const'
 
 var md5 = require('md5');
 
@@ -75,16 +76,28 @@ function Register() {
             const salt = username;
             const hash = md5(password + salt);
 
-            // try {
-            const NodeRSA = require('node-rsa');
-            const key = new NodeRSA();
+            try {
+                const NodeRSA = require('node-rsa');
+                const key = new NodeRSA().generateKeyPair(256);
+                const publicKey = key.exportKey("public");
+                const privateKey = key.exportKey("private");
+                const user = {
+                    username: username,
+                    password: hash,
+                    publicKey: publicKey,
+                    recentConversation: []
+                };
+                console.log("register success!", user);
+                await API.addUser(user);
 
-            console.log(key.generateKeyPair().exportKey("public"))
-
-            await API.addUser({ username: "123abc9999", abc: "abc" });
-            // } catch (err) {
-            // alert("server Error, please try again");
-            // }
+                if (typeof window !== "undefined") {
+                    localStorage.setItem(constants.PRIVATE_KEY, privateKey);
+                    localStorage.setItem(constants.USERID, username);
+                }
+                router.push("StorePrivateKey")
+            } catch (err) {
+                alert("server Error, please try again");
+            }
         }
     }
 
@@ -131,7 +144,6 @@ function Register() {
                     id={styles.btnLogin}
                     onClick={submit}
                 >
-                    {/* <i className="fas fa-spinner fa-spin"></i> */}
                     Register
                 </button>
 
