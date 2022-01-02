@@ -1,0 +1,158 @@
+#submitPrivateKey{
+    background-color: red;
+    color: white;
+    text-align: center;
+    align-items: center;
+    font-size: 25px;
+    padding: 10px 0;
+    /* max-height: ; */
+}
+
+
+
+#submitPrivateKey button {
+    border: 2px solid white;
+    background-color: rgb(212, 7, 7);
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 5px 20px;
+    margin-left: 20px;
+    font-size: 25px;
+}
+
+#submitPrivateKey button:hover {
+    background-color: rgb(235, 37, 37);
+}
+
+#submitPrivateKey span {
+
+}
+
+@media  (max-width:800px) {
+    #submitPrivateKey {
+        font-size: 16px;
+        box-sizing: border-box;
+        padding: 5px;
+        min-height: 53px;
+        max-height: 53px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #submitPrivateKey button {
+        font-size: 12px;
+        padding: 3px 20px;
+        border: 1px solid white;
+    }
+    
+}
+
+#wrapperColumn{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#wrapperRow{
+    /* 53px là kích thước thông báo nhập key */
+    height: calc(100% - 53px); 
+    width: 100%;
+    
+    display: flex;
+}
+
+#historyConversation{
+    width: 20%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#mainConversation{
+    width: 80%; 
+    border-left: 3px solid var(--border-color);
+}
+
+#historyConversationHeader,#mainConversationHeader{
+    height: 60px;
+    box-shadow: 0px 4px 8px var(--border-color);
+}
+
+#historyConversationList{
+    height: calc(100% - 65px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#mainConversationList{
+    height: calc(100% - 60px - 100px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#mainConversationInput {
+    height: 100px;
+    box-shadow: 0px -5px 8px rgba(151, 151, 151, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+#mainConversationInput textarea {
+    display: block;
+    resize: none;
+    width: 90%;
+    font-size: 20px;
+    box-sizing: border-box;
+    height: 100%;
+    border: 1px solid rgb(153, 153, 153) ;
+    background-color: rgb(247, 246, 246);
+    border-radius: 5px;
+}
+
+#mainConversationInput textarea:focus {
+    outline: 2px ridge rgba(0, 47, 255, 0.877);
+}
+
+#sendMessage {
+    width: 10%;
+    height: 100%;
+}
+
+#sendMessage button{
+    border: 0;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    font-weight: bolder;
+    background-color: var(--primary-color);
+    height: 100%;
+    width:  90%;
+    margin-left: 10px;
+    display: block;
+    cursor: pointer;
+}
+
+#sendMessage button:hover{
+background-color: rgb(22, 91, 194);
+}
+
+@media (max-width: 800px){
+    
+    #historyConversationHeader,#mainConversationHeader{
+        height: 50px;
+    }
+
+    #historyConversationList,#mainConversationList{
+        height: calc(100% - 50px);
+    }
+
+    #mainConversationList{
+        height: calc(100% - 50px - 100px);
+    }
+
+}
