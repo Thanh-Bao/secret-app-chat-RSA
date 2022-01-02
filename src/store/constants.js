@@ -1,1 +1,0 @@
-export const SWITCH_FORM = 'SWITCH_FORM';

@@ -1,5 +1,5 @@
 // use for localStorage key
-export const USERID_KEY = 'USERID_KEY'; 
+export const USERID = 'USERID'; 
 export const REMEMBER_PASSWORD = 'REMEMBER_PASSWORD';
 
 //firebase firestore

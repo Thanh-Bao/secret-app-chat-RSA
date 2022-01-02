@@ -1,12 +1,12 @@
 import React from 'react'
 
+function Dashboard() {
 
-function Home() {
     return (
         <>
-            Home
+        CHATTTTTTTING
         </>
     )
 }
 
-export default Home
+export default Dashboard

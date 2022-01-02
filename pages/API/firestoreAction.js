@@ -1,6 +1,6 @@
 import * as constants from '../const'
 import { doc, getDoc, collection, setDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from './firebase';
 
 export const checkUsernameExists = async username => {
     if (username === "") {
