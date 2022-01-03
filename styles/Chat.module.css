@@ -52,6 +52,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow: hidden;
 }
 
 #wrapperRow{
@@ -95,6 +96,13 @@ justify-content: center;
     overflow-x: hidden;
     box-sizing: border-box;
     padding: 0 20px;
+}
+
+@media (max-width:600px){
+   
+#historyConversationList{
+    padding: 0 10%;
+}
 }
 
 #mainConversationList{
@@ -212,6 +220,35 @@ background-color: rgb(22, 91, 194);
 #btnLogout{
     border-color:  rgba(236, 9, 9, 0.877);
     color: red;
+}
+
+@media (max-width : 600px){
+    .button{
+        padding: 5px 5px;
+        border-width: 1px;
+        font-weight: 500;
+        border-radius: 3px;
+    }
+    #receivederName{
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    #btnToggle{
+        border-color:  rgb(0, 102, 255);
+        color: blue;
+        padding:5px 5px;
+    }
+}
+
+@media (max-width : 330px){
+    #receivederName{
+        font-size: 15px;
+        font-weight: 600;
+    }
+    #btnLogout{
+        font-size: 10px;
+    }
 }
 
 #btnLogout:hover{
