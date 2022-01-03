@@ -17,7 +17,6 @@
 body,html {
     font-family: 'Nunito', Arial, sans-serif;
     height: 100%;
-        overflow: hidden; /* Hide scrollbars */
 }
 
 #__next{
