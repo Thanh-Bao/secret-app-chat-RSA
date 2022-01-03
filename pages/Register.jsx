@@ -84,7 +84,7 @@ function Register() {
                     username: username,
                     password: hash,
                     publicKey: publicKey,
-                    recentConversation: []
+                    recentConversation: ['admin']
                 };
                 console.log("register success!", user);
                 await API.addUser(user);

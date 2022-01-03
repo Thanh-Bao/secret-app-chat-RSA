@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '../styles/Chat.module.css'
 import * as constants from '../const'
 import clsx from 'clsx';
@@ -9,6 +9,15 @@ import { useRouter } from 'next/router';
 function Chat() {
     const router = useRouter();
     const [isShowEnterKey, setIsShowEnterKey] = useState(true);
+    const [currentReceivederID, setCurrentReceiverID] = useState(null);
+
+    const handleChangeCurrentReceivederID = receivederID => {
+        setCurrentReceiverID(receivederID);
+    }
+
+    useEffect(() => {
+        alert("value=>" + currentReceivederID)
+    }, [currentReceivederID]);
 
     const handlePrivatekey = () => {
         let key = prompt("Please paste your private key here");
@@ -26,6 +35,12 @@ function Chat() {
             localStorage.clear();
         }
         router.push("/");
+    }
+
+    const a = [];
+
+    for (let i = 8888; i < 8988; i++) {
+        a.push(i);
     }
 
     return (
@@ -46,272 +61,10 @@ function Chat() {
                             <input placeholder=' Search' />
                         </div>
                         <div id={styles.historyConversationList}>
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-                            <UserItem />
-
+                            {a.map(index =>
+                                <UserItem key={index}
+                                    changeCurrentReceivederID={handleChangeCurrentReceivederID}
+                                />)}
                         </div>
                     </div>
                     <div id={styles.mainConversation}>
