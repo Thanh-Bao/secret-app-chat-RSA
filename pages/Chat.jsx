@@ -4,8 +4,10 @@ import * as constants from '../const'
 import clsx from 'clsx';
 import UserItem from './components/UserItem/UserItem';
 import ChatItem from './components/ChatItem/ChatItem';
+import { useRouter } from 'next/router';
 
 function Chat() {
+    const router = useRouter();
     const [isShowEnterKey, setIsShowEnterKey] = useState(true);
 
     const handlePrivatekey = () => {
@@ -17,6 +19,13 @@ function Chat() {
             }
             setIsShowEnterKey(false);
         }
+    }
+
+    const handleLogout = () => {
+        if (typeof window != "undefined") {
+            localStorage.clear();
+        }
+        router.push("/");
     }
 
     return (
@@ -311,7 +320,8 @@ function Chat() {
                                 <button
                                     id={styles.btnToggle}
                                     className={styles.button}
-                                >Toggle
+                                >
+                                    <i className="fas fa-arrow-left"></i>
                                 </button>
                             </div>
                             <div id={styles.receivederName}>
@@ -321,7 +331,10 @@ function Chat() {
                                 <button
                                     className={styles.button}
                                     id={styles.btnLogout}
-                                >Logout
+                                    onClick={handleLogout}
+                                >
+                                    <span>Logout </span>
+                                    <i className="fas fa-sign-out-alt"></i>
                                 </button>
                             </div>
                         </div>

@@ -195,6 +195,7 @@ background-color: rgb(22, 91, 194);
 #btnToggle{
     border-color:  rgb(0, 102, 255);
     color: blue;
+    padding: 8px 12px;
 }
 
 #btnToggle:hover{
@@ -219,3 +220,4 @@ background-color: rgb(22, 91, 194);
     color: white;
     cursor: pointer;
 }
+
