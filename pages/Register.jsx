@@ -1,7 +1,7 @@
 import styles from '../styles/Authentication.module.css'
 import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
-import * as API from './API/firestoreAction'
+import * as API from '../API/firestoreAction'
 import { useRouter } from 'next/router'
 import { async } from '@firebase/util'
 import * as constants from './const'

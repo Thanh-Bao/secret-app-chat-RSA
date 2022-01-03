@@ -1,4 +1,4 @@
-import * as constants from '../const'
+import * as constants from '../pages/const'
 import { doc, getDoc, collection, setDoc } from 'firebase/firestore';
 import { db } from './firebase';
 
