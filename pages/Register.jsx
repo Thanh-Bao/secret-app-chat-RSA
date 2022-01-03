@@ -1,7 +1,7 @@
 import styles from '../styles/Authentication.module.css'
 import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
-// import * as API from '../API/firestoreAction'
+import * as API from '../API/firestoreAction'
 import { useRouter } from 'next/router'
 import * as constants from '../const'
 
@@ -23,31 +23,31 @@ function Register() {
 
 
     const validateUsername = async event => {
-        // const name = event.target.value.toLowerCase();
+        const name = event.target.value.toLowerCase();
 
-        // if (name === "") {
-        //     setUsername(name);
-        //     setUsernameWarning("Username is required");
-        //     return;
-        // }
-        // const isInvalid = /(^$)|(^[a-zA-Z0-9]+$)/.test(name);
-        // if (name.length > USERNAME_LENGTH) {
-        //     return;
-        // }
-        // const isUsernameExists = await API.checkUsernameExists(name);
-        // if (isUsernameExists) {
-        //     setUsername(name);
-        //     setUsernameWarning("This username has already been taken");
-        //     return;
-        // }
+        if (name === "") {
+            setUsername(name);
+            setUsernameWarning("Username is required");
+            return;
+        }
+        const isInvalid = /(^$)|(^[a-zA-Z0-9]+$)/.test(name);
+        if (name.length > USERNAME_LENGTH) {
+            return;
+        }
+        const isUsernameExists = await API.checkUsernameExists(name);
+        if (isUsernameExists) {
+            setUsername(name);
+            setUsernameWarning("This username has already been taken");
+            return;
+        }
 
-        // if (isInvalid) {
-        //     setUsername(name);
-        //     setUsernameWarning(null);
-        // } else {
-        //     setUsernameWarning("Username only contain a-z, A-Z and 0-9");
-        //     return;
-        // }
+        if (isInvalid) {
+            setUsername(name);
+            setUsernameWarning(null);
+        } else {
+            setUsernameWarning("Username only contain a-z, A-Z and 0-9");
+            return;
+        }
     };
 
     const validatePassword = event => {
@@ -61,43 +61,43 @@ function Register() {
     }
 
     const submit = async event => {
-        // event.preventDefault();
-        // let checkEmpty = true;
-        // if (username === "") {
-        //     setUsernameWarning("Username is required")
-        //     checkEmpty = false;
-        // }
-        // if (password === "") {
-        //     setPasswordWarning("Password is required")
-        //     checkEmpty = false;
-        // }
-        // if (checkEmpty && usernameWarning == null && passwordWarning == null) {
-        //     const salt = username;
-        //     const hash = md5(password + salt);
+        event.preventDefault();
+        let checkEmpty = true;
+        if (username === "") {
+            setUsernameWarning("Username is required")
+            checkEmpty = false;
+        }
+        if (password === "") {
+            setPasswordWarning("Password is required")
+            checkEmpty = false;
+        }
+        if (checkEmpty && usernameWarning == null && passwordWarning == null) {
+            const salt = username;
+            const hash = md5(password + salt);
 
-        //     try {
-        //         const NodeRSA = require('node-rsa');
-        //         const key = new NodeRSA().generateKeyPair(256);
-        //         const publicKey = key.exportKey("public");
-        //         const privateKey = key.exportKey("private");
-        //         const user = {
-        //             username: username,
-        //             password: hash,
-        //             publicKey: publicKey,
-        //             recentConversation: []
-        //         };
-        //         console.log("register success!", user);
-        //         await API.addUser(user);
+            try {
+                const NodeRSA = require('node-rsa');
+                const key = new NodeRSA().generateKeyPair(256);
+                const publicKey = key.exportKey("public");
+                const privateKey = key.exportKey("private");
+                const user = {
+                    username: username,
+                    password: hash,
+                    publicKey: publicKey,
+                    recentConversation: []
+                };
+                console.log("register success!", user);
+                await API.addUser(user);
 
-        //         if (typeof window !== "undefined") {
-        //             localStorage.setItem(constants.PRIVATE_KEY, privateKey);
-        //             localStorage.setItem(constants.USERID, username);
-        //         }
-        //         router.push("StorePrivateKey")
-        //     } catch (err) {
-        //         alert("server Error, please try again");
-        //     }
-        // }
+                if (typeof window !== "undefined") {
+                    localStorage.setItem(constants.PRIVATE_KEY, privateKey);
+                    localStorage.setItem(constants.USERID, username);
+                }
+                router.push("StorePrivateKey")
+            } catch (err) {
+                alert("server Error, please try again");
+            }
+        }
     }
 
     return (

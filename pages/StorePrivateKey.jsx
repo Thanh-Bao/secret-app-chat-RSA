@@ -22,7 +22,7 @@ function StorePrivateKey() {
                 </div>
 
                 <br />
-                <div style={styles.notePrivateKey}>
+                <div id={styles.notePrivateKey}>
                 <div>1. Private key chỉ được cấp 1 lần và hệ thống không lưu lại private key</div>
                 <div>2. Bạn nên tự copy private key này và ở nơi an toàn VD: icloud, google drive</div>
                 <div>3. Nếu làm mất private key bạn sẽ không đọc được tin nhắn và không thể khôi phục</div>
