@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../styles/Chat.module.css'
 import * as constants from './const'
+import clsx from 'clsx';
+import UserItem from './components/UserItem/UserItem';
+import ChatItem from './components/ChatItem/ChatItem';
 
 function Chat() {
+    const [isShowEnterKey, setIsShowEnterKey] = useState(true);
 
     const handlePrivatekey = () => {
         let key = prompt("Please paste your private key here");
@@ -11,290 +15,331 @@ function Chat() {
             if (typeof window !== "undefined") {
                 localStorage.setItem(constants.PRIVATE_KEY, key);
             }
+            setIsShowEnterKey(false);
         }
     }
 
     return (
         <>
             <div id={styles.wrapperColumn}>
-                <div id={styles.submitPrivateKey}>
+                <div
+                    style={{ display: isShowEnterKey ? 'visiable' : 'none' }}
+                    id={styles.submitPrivateKey}
+                >
                     <span>To view the message you need to enter your private key </span>
                     <button onClick={handlePrivatekey}>OK</button>
                 </div>
 
-                <div id={styles.wrapperRow}>
+                <div style={{ height: isShowEnterKey ? 'calc(100% - 53px)' : '100%' }}
+                    id={styles.wrapperRow}>
                     <div id={styles.historyConversation}>
                         <div id={styles.historyConversationHeader}>
-
+                            <input placeholder=' Search' />
                         </div>
                         <div id={styles.historyConversationList}>
-                            <h1>
-                                sdfsdfffad9999
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad123
-                            </h1>
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
+                            <UserItem />
 
                         </div>
                     </div>
                     <div id={styles.mainConversation}>
                         <div id={styles.mainConversationHeader}>
-
+                            <div>
+                                <button
+                                    id={styles.btnToggle}
+                                    className={styles.button}
+                                >Toggle
+                                </button>
+                            </div>
+                            <div id={styles.receivederName}>
+                                NguyenVanA
+                            </div>
+                            <div>
+                                <button
+                                    className={styles.button}
+                                    id={styles.btnLogout}
+                                >Logout
+                                </button>
+                            </div>
                         </div>
                         <div id={styles.mainConversationList}>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad
-                            </h1>
-                            <h1>
-                                sdfsdfffad777
-                            </h1>
-                            <h1>
-                                sdfsdfffad888
-                            </h1>
-                            <h1>
-                                sdfsdfffad999
-                            </h1>
-                            <h1>
-                                sdfsdfffad123
-                            </h1>
+                            <ChatItem hihi={false} />
+                            <ChatItem hihi={false} />
+                            <ChatItem hihi={true} />
+                            <ChatItem hihi={true} />
+                            <ChatItem hihi={false} />
+                            <ChatItem hihi={true} />
+                            <ChatItem hihi={true} />
+                            <ChatItem hihi={false} />
+                            <ChatItem hihi={true} />
+                            <ChatItem hihi={true} />
+                            <ChatItem hihi={false} />
+                            <ChatItem hihi={true} />
+                            <ChatItem hihi={true} />
+                            <ChatItem hihi={false} />
                         </div>
                         <div id={styles.mainConversationInput}>
                             <textarea />

@@ -1,0 +1,26 @@
+#chatItemRow {
+    margin-top: 15px;
+    display: flex;
+    justify-content: start;
+}
+#chatItemRow:first-child {
+    margin-top: 10px;
+}
+
+#chatItemRow span {
+    background-color: rgb(209, 209, 209);
+    max-width: 40%;
+    box-sizing: border-box;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 20px;
+}
+
+.ownerChatItem span {
+    background-color: blue;
+    color:white;
+}
+
+.ownerChatItemRow {
+    justify-content: end;
+}

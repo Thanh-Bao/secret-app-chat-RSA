@@ -24,7 +24,7 @@ function Register() {
 
 
     const validateUsername = async event => {
-        const name = event.target.value;
+        const name = event.target.value.toLowerCase();
 
         if (name === "") {
             setUsername(name);
