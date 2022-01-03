@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../styles/Authentication.module.css'
 import clsx from 'clsx'
-import * as constants from './const'
+import * as constants from '../const'
 import { useRouter } from 'next/router'
 
 function StorePrivateKey() {

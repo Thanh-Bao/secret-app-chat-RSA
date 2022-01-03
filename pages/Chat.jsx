@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from '../styles/Chat.module.css'
-import * as constants from './const'
+import * as constants from '../const'
 import clsx from 'clsx';
 import UserItem from './components/UserItem/UserItem';
 import ChatItem from './components/ChatItem/ChatItem';

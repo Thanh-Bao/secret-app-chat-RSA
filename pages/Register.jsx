@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
 // import * as API from '../API/firestoreAction'
 import { useRouter } from 'next/router'
-import * as constants from './const'
+import * as constants from '../const'
 
 var md5 = require('md5');
 

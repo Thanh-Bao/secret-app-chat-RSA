@@ -2,7 +2,7 @@ import styles from '../styles/Authentication.module.css'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
-import * as constants from './const';
+import * as constants from '../const';
 
 import { } from 'firebase/firestore';
 

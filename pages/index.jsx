@@ -1,4 +1,4 @@
-import * as constants from './const'
+import * as constants from '../const'
 import Login from './Login'
 import Chat from './Chat';
 import { useRouter } from 'next/router'
