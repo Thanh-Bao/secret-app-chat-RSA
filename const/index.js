@@ -3,7 +3,8 @@ export const USERID = '0x63f4ac9';
 export const REMEMBER_PASSWORD = '0x74afdc6';
 export const PRIVATE_KEY = '0x645de33ac';
 //firebase firestore
-export const COLLECTION_NAME = "0x1242adfc2"
+export const USERS_COLLECTION = "0x1242adfc2"
+export const CONSERVATION_COLLECTION = "0x624a8f3c19";
 
 
 //export const CONSTANT_N = 'value';

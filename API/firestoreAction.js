@@ -6,7 +6,7 @@ export const checkUsernameExists = async username => {
     if (username === "") {
         return false;
     }
-    const docRef = doc(db, constants.COLLECTION_NAME, username);
+    const docRef = doc(db, constants.USERS_COLLECTION, username);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
         return true;
@@ -18,7 +18,7 @@ export const checkUsernameExists = async username => {
 export const addUser = async account => {
     const { username, password, publicKey, recentConversation } = account;
     try {
-        const userRef = collection(db, constants.COLLECTION_NAME);
+        const userRef = collection(db, constants.USERS_COLLECTION);
         await setDoc(doc(userRef, username), { password, publicKey, recentConversation });
         return true;
     } catch (err) {

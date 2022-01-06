@@ -6,10 +6,23 @@ import UserItem from './components/UserItem/UserItem';
 import ChatItem from './components/ChatItem/ChatItem';
 import { useRouter } from 'next/router';
 
+import { doc, collection, onSnapshot, setDoc, addDoc } from "firebase/firestore";
+import { db } from '../API/firebase';
+import { async } from '@firebase/util';
+import firebase  from 'firebase/app';
+
+
 function Chat() {
     const router = useRouter();
     const [isShowEnterKey, setIsShowEnterKey] = useState(true);
-    const [currentReceivederID, setCurrentReceiverID] = useState(null);
+    const [currentReceivederID, setCurrentReceiverID] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem(constants.USERID);
+        } else {
+            return null;
+        }
+    });
+    const [currentConservation, setCurrentConservation] = useState(null);
 
     const handleChangeCurrentReceivederID = receivederID => {
         setCurrentReceiverID(receivederID);
@@ -18,6 +31,21 @@ function Chat() {
     useEffect(() => {
         alert("value=>" + currentReceivederID)
     }, [currentReceivederID]);
+
+    useEffect(() => {
+        const unsubscribe = onSnapshot(collection(db, constants.USERS_COLLECTION), (snapshot) => {
+            setCurrentConservation(snapshot.docs.map(chatItem => chatItem.data()));
+        });
+        return unsubscribe;
+    }, [currentConservation]);
+
+    const SendMessage = async () => {
+        await addDoc(collection(db, constants.CONSERVATION_COLLECTION), {
+            name: "Los Angeles12",
+            state: "CA",
+            // country: db.firebase.firestore.FieldValue.serverTimestamp()
+        })
+    }
 
     const handlePrivatekey = () => {
         let key = prompt("Please paste your private key here");
