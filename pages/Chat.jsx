@@ -93,11 +93,19 @@ function Chat() {
                             <input placeholder=' Search' />
                         </div>
                         <div id={styles.historyConversationList}>
-                            {historyConversation.map((username, index) =>
-                                <UserItem key={index}
-                                    username={username}
-                                    changeCurrentReceivederID={handleChangeCurrentReceivederID}
-                                />)}
+                            {historyConversation.length !== 1 ?
+                                <div style={{color: "gray", fontWeight: "900", textAlign: "center", marginTop : "200px"}}>
+                                    conversation history is empty
+                                </div>
+                                :
+                                historyConversation.map((username, index) =>
+                                    <UserItem
+                                        key={index}
+                                        username={username}
+                                        changeCurrentReceivederID={handleChangeCurrentReceivederID}
+                                    />
+                                )
+                            }
                         </div>
                     </div>
                     <div id={styles.mainConversation}>

@@ -50,3 +50,8 @@
     box-sizing: border-box;
     padding-right: 20px;
 }
+
+#emptyHistory {
+    font-weight: 900;
+    color: rgb(255, 0, 0);
+}
