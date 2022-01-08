@@ -91,6 +91,7 @@ function Register() {
 
                 if (typeof window !== "undefined") {
                     localStorage.setItem(constants.PRIVATE_KEY, privateKey);
+                    localStorage.setItem(constants.PUBLIC_KEY, publicKey);
                     localStorage.setItem(constants.USERID, username);
                 }
                 router.push("StorePrivateKey")

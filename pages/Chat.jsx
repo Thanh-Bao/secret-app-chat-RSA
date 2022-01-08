@@ -6,10 +6,11 @@ import UserItem from './components/UserItem/UserItem';
 import ChatItem from './components/ChatItem/ChatItem';
 import { useRouter } from 'next/router';
 
-import { doc, collection, onSnapshot, setDoc, addDoc } from "firebase/firestore";
+import { doc, getDocs, collection, onSnapshot, setDoc, addDoc, serverTimestamp, query, where } from "firebase/firestore";
 import { db } from '../API/firebase';
 import { async } from '@firebase/util';
-import firebase  from 'firebase/app';
+import firebase from 'firebase/app';
+import * as API from '../API/firestoreAction';
 
 
 function Chat() {
@@ -23,13 +24,15 @@ function Chat() {
         }
     });
     const [currentConservation, setCurrentConservation] = useState(null);
-
+    const [message, setMessage] = useState('');
+    const [historyConversation, setHistoryConversation] = useState([]);
     const handleChangeCurrentReceivederID = receivederID => {
         setCurrentReceiverID(receivederID);
     }
 
-    useEffect(() => {
-        alert("value=>" + currentReceivederID)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(async () => {
+        setHistoryConversation(await API.getHistoryconversation());
     }, [currentReceivederID]);
 
     useEffect(() => {
@@ -39,12 +42,19 @@ function Chat() {
         return unsubscribe;
     }, [currentConservation]);
 
-    const SendMessage = async () => {
+    const sendMessage = async (contentForReceiver, contentForSender) => {
         await addDoc(collection(db, constants.CONSERVATION_COLLECTION), {
-            name: "Los Angeles12",
-            state: "CA",
-            // country: db.firebase.firestore.FieldValue.serverTimestamp()
+            usernameSender: localStorage.getItem(constants.USERID),
+            usernameReceiver: currentReceivederID,
+            contentForReceiver: contentForReceiver,
+            contentForSender: contentForSender,
+            timestamp: serverTimestamp()
         })
+    }
+
+    const handleSubmit = () => {
+        sendMessage(message, message);
+        setMessage('');
     }
 
     const handlePrivatekey = () => {
@@ -65,12 +75,6 @@ function Chat() {
         router.push("/");
     }
 
-    const a = [];
-
-    for (let i = 8888; i < 8988; i++) {
-        a.push(i);
-    }
-
     return (
         <>
             <div id={styles.wrapperColumn}>
@@ -89,8 +93,9 @@ function Chat() {
                             <input placeholder=' Search' />
                         </div>
                         <div id={styles.historyConversationList}>
-                            {a.map(index =>
+                            {historyConversation.map((username, index) =>
                                 <UserItem key={index}
+                                    username={username}
                                     changeCurrentReceivederID={handleChangeCurrentReceivederID}
                                 />)}
                         </div>
@@ -106,7 +111,7 @@ function Chat() {
                                 </button>
                             </div>
                             <div id={styles.receivederName}>
-                                NguyenVanA
+                                {currentReceivederID}
                             </div>
                             <div>
                                 <button
@@ -136,9 +141,11 @@ function Chat() {
                             <ChatItem hihi={false} />
                         </div>
                         <div id={styles.mainConversationInput}>
-                            <textarea />
+                            <textarea value={message} onChange={event => { setMessage(event.target.value) }} />
                             <div id={styles.sendMessage}>
-                                <button>Send</button>
+                                <button disabled={message !== '' ? false : true}
+                                    onClick={handleSubmit}
+                                >Send</button>
                             </div>
                         </div>
                     </div>

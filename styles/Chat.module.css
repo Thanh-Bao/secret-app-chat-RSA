@@ -258,3 +258,9 @@ background-color: rgb(22, 91, 194);
     cursor: pointer;
 }
 
+#mainConversationInput button:disabled {
+    background-color: rgb(167, 166, 166);
+    /* color: black; */
+    cursor: not-allowed;
+}
+
