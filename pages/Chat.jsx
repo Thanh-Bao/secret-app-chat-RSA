@@ -29,6 +29,7 @@ function Chat() {
     const handleChangeCurrentReceivederID = receivederID => {
         setCurrentReceiverID(receivederID);
     }
+    const [listResultSearch, setListResultSearch] = useState([1, 2, 3, 4, 5, 6]);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
@@ -75,6 +76,17 @@ function Chat() {
         router.push("/");
     }
 
+    const SearchUserItem = ({name}) => {
+        return (
+            <div className={styles.searchItem}>
+                <p>
+                    <i className="far fa-user-circle"></i> {name}
+                </p>
+                {listResultSearch.length === 1 ? null : <hr/>}
+            </div>
+        )
+    }
+
     return (
         <>
             <div id={styles.wrapperColumn}>
@@ -90,11 +102,16 @@ function Chat() {
                     id={styles.wrapperRow}>
                     <div id={styles.historyConversation}>
                         <div id={styles.historyConversationHeader}>
-                            <input placeholder=' Search' />
+                            <div>
+                                <input placeholder=' Search' />
+                                <div id={styles.listSearchResult}>
+                                    {listResultSearch.map(name => <SearchUserItem key={name} name={name} />)}
+                                </div>
+                            </div>
                         </div>
                         <div id={styles.historyConversationList}>
                             {historyConversation.length !== 1 ?
-                                <div style={{color: "gray", fontWeight: "900", textAlign: "center", marginTop : "200px"}}>
+                                <div style={{ color: "gray", fontWeight: "900", textAlign: "center", marginTop: "200px" }}>
                                     conversation history is empty
                                 </div>
                                 :
