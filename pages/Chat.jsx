@@ -30,6 +30,8 @@ function Chat() {
         setCurrentReceiverID(receivederID);
     }
     const [listResultSearch, setListResultSearch] = useState([1, 2, 3, 4, 5, 6]);
+    const [showSuggestSearch, setShowSuggestSeatch] = useState(false);
+    const [showSearchEmpty, setShowSearchEmpty] = useState(false);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
@@ -76,13 +78,13 @@ function Chat() {
         router.push("/");
     }
 
-    const SearchUserItem = ({name}) => {
+    const SearchUserItem = ({ name }) => {
         return (
             <div className={styles.searchItem}>
                 <p>
                     <i className="far fa-user-circle"></i> {name}
                 </p>
-                {listResultSearch.length === 1 ? null : <hr/>}
+                {listResultSearch.length === 1 ? null : <hr />}
             </div>
         )
     }
@@ -103,10 +105,24 @@ function Chat() {
                     <div id={styles.historyConversation}>
                         <div id={styles.historyConversationHeader}>
                             <div>
-                                <input placeholder=' Search' />
-                                <div id={styles.listSearchResult}>
-                                    {listResultSearch.map(name => <SearchUserItem key={name} name={name} />)}
-                                </div>
+                                <input
+                                    onFocus={() => {
+                                        if (listResultSearch.length >= 0) {
+                                            setShowSuggestSeatch(true)
+                                        }
+                                    }}
+                                    onBlur={() => { setShowSuggestSeatch(false) }}
+                                    placeholder=' Search' />
+                                {showSuggestSearch ?
+                                    <div id={styles.listSearchResult}>
+                                        {showSearchEmpty ?
+                                            <div>
+                                                username not found, try again
+                                            </div> :
+                                            listResultSearch.map(name => <SearchUserItem key={name} name={name} />)
+                                        }
+                                    </div> :
+                                    null}
                             </div>
                         </div>
                         <div id={styles.historyConversationList}>
