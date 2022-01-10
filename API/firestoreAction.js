@@ -45,3 +45,13 @@ export const getHistoryconversation = async () => {
     if (docSnap.exists())
         return docSnap.data().recentConversation;
 }
+
+export const getPublicKeyUser = async keyword => {
+    const snap = await getDoc(doc(db, constants.USERS_COLLECTION, keyword))
+    if (snap.exists()) {
+        return snap.data().publicKey;
+    }
+    else {
+        return null;
+    }
+}

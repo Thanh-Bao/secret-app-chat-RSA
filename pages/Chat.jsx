@@ -18,7 +18,12 @@ function Chat() {
     const [isShowEnterKey, setIsShowEnterKey] = useState(true);
     const [currentReceivederID, setCurrentReceiverID] = useState(() => {
         if (typeof window !== 'undefined') {
-            return localStorage.getItem(constants.USERID);
+            const currentUserChat = localStorage.getItem(constants.CURRENT_USER_CONVERSATION);
+            if (currentConservation !== null) {
+                return currentUserChat;
+            } else {
+                return localStorage.getItem(constants.USERID);
+            }
         } else {
             return null;
         }
@@ -29,9 +34,7 @@ function Chat() {
     const handleChangeCurrentReceivederID = receivederID => {
         setCurrentReceiverID(receivederID);
     }
-    const [listResultSearch, setListResultSearch] = useState([1, 2, 3, 4, 5, 6]);
-    const [showSuggestSearch, setShowSuggestSeatch] = useState(false);
-    const [showSearchEmpty, setShowSearchEmpty] = useState(false);
+    const [listResultSearch, setListResultSearch] = useState([]);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
@@ -89,6 +92,24 @@ function Chat() {
         )
     }
 
+    const handleInputChange = event => {
+        API.getPublicKeyUser(event.target.value).then(value => {
+            console.log(value)
+        })
+    }
+
+    const handleSearch = async () => {
+        try {
+            let person = prompt("Enter the username you are looking for");
+            const key = await API.getPublicKeyUser(person);
+            if (key == null) throw new Error("username not found");
+            localStorage.setItem(constants.PUBLIC_KEY_RECEIVEDER, key);
+            localStorage.setItem(constants.CURRENT_USER_CONVERSATION, person);
+        } catch (err) {
+            alert(err);
+        }
+    }
+
     return (
         <>
             <div id={styles.wrapperColumn}>
@@ -104,26 +125,12 @@ function Chat() {
                     id={styles.wrapperRow}>
                     <div id={styles.historyConversation}>
                         <div id={styles.historyConversationHeader}>
-                            <div>
-                                <input
-                                    onFocus={() => {
-                                        if (listResultSearch.length >= 0) {
-                                            setShowSuggestSeatch(true)
-                                        }
-                                    }}
-                                    onBlur={() => { setShowSuggestSeatch(false) }}
-                                    placeholder=' Search' />
-                                {showSuggestSearch ?
-                                    <div id={styles.listSearchResult}>
-                                        {showSearchEmpty ?
-                                            <div>
-                                                username not found, try again
-                                            </div> :
-                                            listResultSearch.map(name => <SearchUserItem key={name} name={name} />)
-                                        }
-                                    </div> :
-                                    null}
-                            </div>
+                            <button
+                                id={styles.btnSearch}
+                                onClick={handleSearch}
+                            >
+                                <i id={styles.searchIcon} className="fas fa-search"></i> Search
+                            </button>
                         </div>
                         <div id={styles.historyConversationList}>
                             {historyConversation.length !== 1 ?
